@@ -1,0 +1,28 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="articles-background">
+	<div style="background-color: #182961">
+		<div class="articles-banner"
+						style="background-image: url({% static 'img/freebitcoin/home-main-banner.jpg' %})"></div>
+				</div>
+	<div class="title-blog-container">
+		<h1>Blog</h1>
+		<span>FreeOMI.com Blog</span>
+	</div>
+	<div class="container blog-container articles-container">
+		<div class="general">
+			<div style="padding:20px 0">
+                <div class="text-dark font-weight-bold text-center fs-2">{{ post.title }}</div>
+                <p>
+					{{ post.content|safe }}
+				</p>
+				<p style="clear: both;"></p>
+			</div>
+		</div>
+	</div>
+
+</div>
+{% endblock content %}

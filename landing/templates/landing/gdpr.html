@@ -1,0 +1,51 @@
+
+{% extends 'landing/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="general">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="banner-wrapper">
+                <img src="{% static 'img/freebitcoin/gdpr.jpg' %}" alt="FAQ">
+                <div class="header-wrapper">
+                    <h1>GDPR</h1>
+                    <p class="lead">FreeOMI takes the GDPR extremely seriously and hereby provides full transparency in regards to data collection, data keeping and processing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        
+        <div class="card mb-4 py-4">
+            <h5>Data Collection</h5>
+            <p>When a publisher signs up to the site, he/she provides an email address and a password. No other information is being provided. The site does not buy user data from any 3rd parties and all the information it collects is collected via registering in the site.</p>
+        </div>
+
+        <div class="card mb-4 py-4">
+            <h5>How the data is being used</h5>
+            <p>The site will never send out unsolicited emails to its users, and will never use the emails our users provide upon registration for any marketing purposes. The only emails the users expect to receive are for password recovery, account confirmation and change of payment details.</p>
+        </div>
+
+        <div class="card mb-4 py-4">
+            <h5>Is the information stored with freeomi.com secured?</h5>
+            <p>We are doing our utmost to ensure the information provided is saved securely and will never share this information with any other party without the user consent. The information the users provide is not accessible to them, and is saved on a secured server with encryption.</p>
+        </div>
+
+        <div class="card mb-4 py-4">
+            <h5>How the site communicates with its users</h5>
+            <p>All communication with the users is being done via the official Twitter account, a clear link to the Twitter account is found in the site itself. All communication such as support inuqiries are dealt with through that page.</p>
+        </div>
+
+        <div class="card py-4">
+            <h5>Compliance with regulators</h5>
+            <p>We are happy to comply with regulators and if needed by all means feel free to keep in touch with us in order to ensure full collaboration between ourselves, our users and regulators accordingly.</p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

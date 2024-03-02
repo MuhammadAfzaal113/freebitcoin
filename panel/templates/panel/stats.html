@@ -1,0 +1,134 @@
+
+{% extends 'landing/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="new-banner stats-bg">
+    <div class="overlay"></div>
+    
+    <div class="banner-content">
+        <h2>Statistics</h2>
+        <p>(Make a withdrawal and check your withdrawals)</p> 
+    </div>
+</div>
+
+<div class="general settings py-5">
+
+    <div class="container">
+        <div class="row" id="analysis-rows">
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+    function Decimal(st){
+        return parseFloat(st)
+    }
+
+    let convert_date_to_label = (date) => {
+        return date.replace(/,.*/, '').replace(/\s/, '/')
+    }
+
+    var dict = {{ analysis | safe }};
+
+    function createRowElement(key, {name, template}){
+        
+        let tr = template.map( ({date, value}) => (
+            `
+            <tr>
+                <td>${date}</td>
+                <td>${value}</td>
+            </tr>
+            `
+        )).join('')
+
+        return `
+        <div class="col-md-6 col-sm-8 my-4">
+
+            <h2 class="stat-head">${name}</h2>
+
+            <table class="table table-striped table-bordered border-dark">
+                <thead>
+                    <tr class="bg-dark text-white">
+                        <th scope="col">Date</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${tr}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-6 col-sm-8">
+
+            <div>
+                <canvas id="${key}"></canvas>
+            </div>
+
+        </div>
+        `
+    }
+
+
+    function createRowChart(key, {name, dates, values}){
+
+        const labels = dates.map(
+            (date_string) => (
+                convert_date_to_label(date_string)
+            )
+        )
+    
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: name,
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: values,
+                tension: 0.5,
+                fill: false,
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+
+        new Chart(
+            document.getElementById(key),
+            config
+        );
+    }
+    
+
+    function generateRows(){
+        let rowContainer = document.getElementById('analysis-rows')
+
+        for (key in dict) {
+            rowContainer.innerHTML = rowContainer.innerHTML + createRowElement(key, dict[key])
+            
+        }
+
+        for (key in dict) {
+            createRowChart(key, dict[key])
+        }
+
+    }
+
+    generateRows()
+    
+
+</script>
+
+{% endblock script %}

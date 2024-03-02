@@ -1,0 +1,130 @@
+
+
+{% extends 'landing/base.html' %}
+{% load static %}
+{% load tags %}
+
+
+{% block content %}
+
+<div class="main-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-10 offset-lg-1">
+                <div class="referral">
+                    <h1 class="color-1">Get 50% from what your referrals make!</h1>
+
+                    <p>
+                        We offer 50% referral commission for friends you bring who play the Free OMI (OMI) game. In the future we will offer commission for playing our Multiply OMI game once it’s ready as well.
+                    </p>
+
+                    <table class="table-1">
+                        <tr>
+                            <th colspan="2" class="bg-2">REFERRAL COMMISSION RATES</th>
+                        </tr>
+                        <tr>
+                            <td class="grey">Free OMI</td>
+                            <td>50% of the prize</td>
+                        </tr>
+                    </table>
+
+                    <p> Please find your Freeomi.com referral link below: </p>
+
+                    <table class="table-2">
+                        <tr>
+                            <th class="bg-1 border-1">YOUR REFERRAL URL</th>
+                        </tr>
+                        <tr>
+                            <td class="border-1">http://{{ site }}/?ref={{ user.profile.code }}</td>
+                        </tr>
+                    </table>
+
+                    <div class="clearfix"></div>
+
+                    <table class="table-1">
+                        <tr>
+                            <th colspan="2" class="bg-2 border-2">BANNERS</th>
+                        </tr>
+                        <tr>
+                            <td>728 x 90</td>
+                            <td>
+                                <input class="form-control" type="text" value="{% request_scheme_and_host %}{% static 'img/728x90/1.png' %}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>728 x 90</td>
+                            <td>
+                                <input class="form-control" type="text" value="{% request_scheme_and_host %}{% static 'img/728x90/2.png' %}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>728 x 90</td>
+                            <td>
+                                <input class="form-control" type="text" value="{% request_scheme_and_host %}{% static 'img/728x90/3.png' %}">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>468 x 60</td>
+                            <td>
+                                <input class="form-control" type="text" value="{% request_scheme_and_host %}{% static 'img/468x60/1.png' %}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>468 x 60</td>
+                            <td>
+                                <input class="form-control" type="text" value="{% request_scheme_and_host %}{% static 'img/468x60/2.png' %}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>468 x 60</td>
+                            <td>
+                                <input class="form-control" type="text" value="{% request_scheme_and_host %}{% static 'img/468x60/3.png' %}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>468 x 60</td>
+                            <td>
+                                <input class="form-control" type="text" value="{% request_scheme_and_host %}{% static 'img/468x60/4.png' %}">
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p>Your referral commissions are updated in real time. The numbers below are for reference only and provide the commissions you have accumulated over time.<p>These stats are updated hourly.</p></p>
+
+                    <table class="table-2">
+                        <tr>
+                            <th class="bg-1 border-1">TOTAL REFERRALS</th>
+                        </tr>
+                        <tr>
+                            <td class="border-1">{{ user.count_referrals }}</td>
+                        </tr>
+                    </table>
+
+                    <div class="clearfix"></div>
+
+                    <table class="table-1">
+                        <tr>
+                            <th colspan="2" class="bg-2">REFERRAL COMMISSIONS EARNED</th>
+                        </tr>
+                        <tr>
+                            <td>TOTAL</td>
+                            <td>{{ total_earned }}</td>
+                        </tr>
+                        <tr>
+                            <td>RECENT</td>
+                            <td>{{ recent_earned }}</td>
+                        </tr>
+                        <tr>
+                            <td>TOTAL EARNED OMI</td>
+                            <td>{{ total_earned }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock content %}
+    

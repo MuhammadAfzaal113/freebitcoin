@@ -1,0 +1,41 @@
+
+
+{% extends 'landing/base.html' %}
+{% load static %}
+{% load mytags %}
+
+
+{% block content %}
+
+<div class="main-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-10 offset-lg-1">
+                
+                <h2>Free Roll links</h2>
+
+                <div class="bg-info text-light rounded p-3 my-3">
+                    Links can be used once every 24 hours. Make sure to visit 1 link at a time and after you use the FREE roll, visit another link for another FREE roll! If you open multiple links consecutively without rolling in between, you will end up wasting your free rolls and will only get one!
+                </div>
+
+                <div class="row free-link-rolls">
+                    {% for link in freebitcoin_links %}
+                        <div class="col-xs-12 col-lg-6 my-3">
+                            <div class="card {% has_used_link user link %}">
+                                <div class="card-body">
+                                    <h3 class="card-title">Free Roll Link {{ forloop.counter }}</h3>
+                                    <p class="card-text">
+                                        <a href="{% url 'panel:use_free_rolls' link.id %}" class="btn btn-info" target="_blank">Visit</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock content %}
+    

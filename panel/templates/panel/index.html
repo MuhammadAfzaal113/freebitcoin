@@ -1,0 +1,226 @@
+
+{% extends 'landing/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Ezoic - top_of_page - top_of_page -->
+<div id="ezoic-pub-ad-placeholder-104">
+    <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+    </script>
+    <ins class="adsbygoogle" style="display:inline-block;width:468px;height:60px"
+    data-ad-client="ca-pub-123456789101112"
+    data-ad-slot="5744848575"></ins>
+    <script>(window.adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<!-- End Ezoic - top_of_page - top_of_page -->
+<!-- Ezoic - sidebar - sidebar -->
+<!--<div id="ezoic-pub-ad-placeholder-103"> </div>-->
+<!-- End Ezoic - sidebar - sidebar -->
+<div class="main-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="free">
+
+                    <span id="remaining_time" class="d-none">{{ remaining_time }}</span>
+                        <div style="display: flex; justify-content: space-between; width: 100%; z-index: 999;" class="desktop-ad">
+                            <div class="iframe-container" style="order: 1;">
+                               <iframe src='https://ads.coinserom.com/publisher?adsunit=&serom=3131373433&size=300x250' style='width:300px;height:250px;border:0px;padding:0;background-color: transparent;overflow: auto;'>
+                            </iframe>
+                            </div>
+                            <div class="iframe-container" style="order: 2;">
+                                <iframe src='https://ads.coinserom.com/publisher?adsunit=&serom=3131373433&size=300x250' style='width:300px;height:250px;border:0px;padding:0;background-color: transparent;overflow: auto;'>
+                            </iframe>
+                            </div>
+                            <div class="iframe-container" style="order: 2;">
+                                <iframe src='https://ads.coinserom.com/publisher?adsunit=&serom=3131373433&size=300x250' style='width:300px;height:250px;border:0px;padding:0;background-color: transparent;overflow: auto;'>
+                            </iframe>
+                            </div>
+
+                        </div>
+                    <div>
+                        <div class="mobile-ad" style="display: none;">
+                            <iframe src='https://ads.coinserom.com/publisher?adsunit=&serom=3131373433&size=728x90' style='border:0px;padding:0;background-color: transparent;overflow: auto;'></iframe>
+                        </div>
+                    </div>
+                    <h1 class="color-other">THIS GAME IS PROBABLY FAIR!</h1>
+
+                    <p class="top-text">
+                        Please click on the ROLL button to get your Free OMI. The amount of Free OMI that you get will depend on the number that you roll and paid out according to the payout table below. You can come back and play every hour to win additional Free OMI each time! You would also get 50% of what your referrals get from us as well.
+                        <br><br>
+                    </p>
+
+                    <div class="col-xs-12 col-md-4 offset-md-4 col-sm-6 offset-sm-3">
+                        <div class="form-group">
+                            <label>Please enter your promo code: (check our <a href="https://twitter.com/OmiFaucet" target="_blank">twitter</a>)</label>
+                            <div class="input-group">
+                                <input data-url="{% url 'panel:use_promo_code' %}" id="promo-code" type="text" name="code" class="form-control" placeholder="Promo code">
+                                <span class="input-group-btn">
+                                    <button id="submit-promo-code" type="button" class="btn main-button-blue-simple submit-promo" style="color:white">Go!</button>
+                                </span>
+                            </div>
+                            <p class="text-center">
+                                <br>
+                                - OR -
+                                <br>
+                                <br>
+                                <span style="font-weight:bold">Visit the <a href="{% url 'panel:free_rolls' %}">FREE ROLLS</a> page</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-10 offset-md-1 table-wrapper">
+                        <div class="timeout-wrapper">
+                            <h3 class="color-dark">Countdown to next ROLL!</h3>
+
+                            <div class="timeout-container">
+                                <div class="minutes">
+                                    <div class="digits">0</div>
+                                    <div class="label">MINUTES</div>
+                                </div>
+
+                                <div class="seconds">
+                                    <div class="digits">0</div>
+                                    <div class="label">SECONDS</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table>
+                                    <tr>
+                                        <th class="bg-dark border-1">LUCKY NUMBER</th>
+                                        <th class="bg-dark border-1">PAYOUT</th>
+                                        <th class="bg-dark border-1">SHOW VALUE IN OMI</th>
+                                    </tr>
+
+                                    
+                                    {% for v in roll_values %}
+                                        <tr>
+                                            <td class="bg-dark border-1">{{ v.roll_range }}</td>
+                                            <td class="bg-dark border-1">{{ v.payout }}</td>
+                                            <td class="bg-dark border-1">{{ v.value_in_omi }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                        
+                                </table>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div id="taboola-right-rail-thumbnails"></div>
+                                <script type="text/javascript">
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="lucky-numbers">
+                            <div class="lucky-number-wrapper">
+                                <div class="lucky-number digit-1">0</div>
+                            </div>
+                            <div class="lucky-number-wrapper">
+                                <div class="lucky-number digit-2">0</div>
+                            </div>  
+                            <div class="lucky-number-wrapper">
+                                <div class="lucky-number digit-3">0</div>
+                            </div>  
+                            <div class="lucky-number-wrapper">
+                                <div class="lucky-number digit-4">0</div>
+                            </div>  
+                            <div class="lucky-number-wrapper">
+                                <div class="lucky-number digit-5">0</div>
+                            </div>
+                        </div>
+
+                        <div class="result"></div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    
+                    <div class="roll-wrapper">
+                        <div class="h-captcha"></div>
+                        <button class="main-button-2 roll-button bg-2">ROLL!</button>
+                        <br>
+                        <p class="text-center">
+                            <span class="pending-rolls">You can roll 1 more times.</span>
+                        </p>
+                    </div>
+
+                    <style>
+                        #coinzilla img{
+                            display: block;
+                            margin: 3rem auto;
+                        }
+                    </style>
+
+                    <a id="coinzilla" href="https://coinzilla.com/ref/37462ed6a653c240815/" target="_blank">
+                        <img src="{% static 'img/banner1.jpeg' %}" alt="">
+                    </a>
+
+
+                    <!-- Button trigger modal -->
+                    <button id="lauchEarnMore" type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Launch demo modal
+                    </button>
+
+
+                    <style>
+
+                        #exampleModal h5{
+                            font-size: 1.6rem;
+                        }
+
+                        #exampleModal p{
+                            font-size: 1.2rem;
+                            line-height: 2;
+                        }
+
+                        #exampleModal .btn{
+                            padding: .8rem 2rem;
+                            font-size: 1.2rem;
+                        }
+
+                    </style>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header py-4">
+                                <h5 class="modal-title" id="exampleModalLabel">Earn More with Surveys</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body py-4">
+                                <p>Whilst waiting for another roll you can earn so much
+                                    more by completing survey! Increase your earnings now.
+                                </p>
+                            </div>
+                            <div class="modal-footer d-flex align-items-center justify-content-center py-3">
+                                <a href="{% url 'panel:earn_more' %}" class="btn btn-outline-danger">Go to Earn More Page</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+  
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script>-->
+<!--    window.ezstandalone = window.ezstandalone || {};-->
+<!--    ezstandalone.cmd = ezstandalone.cmd || [];-->
+<!--    ezstandalone.cmd.push(function() {-->
+<!--        ezstandalone.define(103);-->
+<!--        ezstandalone.enable();-->
+<!--        console.log(ezstandalone);-->
+<!--        ezstandalone.display();-->
+
+<!--    });-->
+<!--</script>-->
+
+{% endblock content %}

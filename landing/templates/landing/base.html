@@ -1,0 +1,214 @@
+{% load static %}
+
+{% load mytags %}
+{% load google_translate %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" lang="en"> <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Free Ecomi Cryptocurrency faucet{{ title }}</title>
+        <meta name="description" content="Win free Ecomi cryptocurrency after playing a simple game. Get Free Ecomi Digital currency up to $300. We are a free Ecomi faucet &amp; OMI.">
+        <meta name="keywords" content="Coin,Faucet,Free,Ecomi,freeomi.com" />
+        <meta name="robots" content="index, follow">
+        <link rel="canonical" href="website_link_here" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}" />
+        
+        
+        <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="{% static 'css/icofont.css' %}">
+        <link rel="stylesheet" href="{% static 'css/feather-icon.css' %}">
+
+
+        <link rel="stylesheet" href="{% static 'css/app.css' %}">
+        <link rel="stylesheet" href="{% static 'css/dev.css' %}">
+
+        <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+
+    </head>
+    <body>
+
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id='loader_container'>
+
+            <div id='loader_span'></div>
+    
+        </div>
+
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+
+        {% if not request.user.is_authenticated %}
+
+            <header class="header nav-header">
+                <div class="container">
+                    <div class="main-navbar">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+
+                            <a id="light_logo_img" class="navbar-brand" href="/"><img src="{% static 'img/logo.png' %}" class="" alt="Free Ecomi"></a>
+
+                            <a id="dark_logo_img" class="navbar-brand" href="/"><img src="{% static 'img/dark_logo.png' %}" class="" alt="Free Bitcoin"></a>
+
+
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'landing:faq' %}">FAQ</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/" data-scroll="mid">Features</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/" data-scroll="bot">Ecomi</a></li>
+                                    <li class="nav-item"><a class="nav-link register-link" href="/" data-scroll="top">Register</a></li>
+                                    <li class="nav-item"><a class="nav-link login-link" href="/" data-scroll="top">Login</a></li>
+                                    <li class="nav-item"><a class="nav-link" target="_blank" href="https://korekuta88.com">OMI MERCH</a></li>
+
+                                    <li class="navbar-twitter"><a href="https://twitter.com/OmiFaucet"></a></li>
+
+                                    <li class="navbar-coins bg-1 visible-lg"><a href="#">1 OMI = ${% get_omi_price %}</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </header>
+
+        {% else %}
+
+            <header class="header nav-header {% if not homepage %}loggedin{% endif %}">
+                <div class="container-fluid">
+                    <div class="main-navbar">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+
+                            {% if not homepage %}
+                                <a class="navbar-brand" href="/"><img src="{% static 'img/dark_logo.png' %}" class="" alt="Free Bitcoin"></a>
+                            {% else %}
+                                <a class="navbar-brand" href="/"><img src="{% static 'img/logo.png' %}" class="" alt="Free Bitcoin"></a>
+                            {% endif %}
+
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+            
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'panel:index' %}">Free OMI</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'panel:earn_more' %}" style="font-weight:bold;text-decoration:underline;">Earn More</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'panel:referral' %}">Referral Program</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'landing:faq' %}">FAQ</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'account:settings' %}">Settings</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'panel:stats' %}">Stats</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'panel:withdrawal' %}">Withdrawals</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'panel:free_rolls' %}" style="font-weight: bold;text-decoration: underline">Free Rolls</a></li>
+                                    <li class="nav-item"><a class="nav-link" target="_blank" href="https://korekuta88.com">OMI MERCH</a></li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'panel:messages' %}">
+                                            <span class="fa fa-envelope" aria-hidden="true">
+                                                <span class="notifications">2</span>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li class="navbar-twitter"><a target="_blank" href="https://twitter.com/OmiFaucet"></a></li>
+
+                                    <li class="nav-item"><a class="nav-link text-light nav-withdraw bg-2" href="{% url 'panel:withdrawal' %}">Withdraw</a></li>
+                                    
+                                    <li class="navbar-coins bg-1">
+                                        <a href="#">{{ request.user.get_balance }} OMI</a>
+                                    </li>
+            
+                                    <li class="nav-item navbar-logout"><a href="{% url 'account:logout' %}"></a></li>
+            
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+            
+                    <div class="clearfix"></div>
+                </div>
+            </header>
+
+            
+            {% if not user.verified %}
+                <div class="text-white px-2 py-3 text-center" style="background-color: black;">
+                    Please confirm your email address by clicking the link we sent to your email account.
+                    If you haven't received an email please click <a href="{% url 'account:resend_activation_link' %}">Here</a>.
+                    Please remember to check your spam if you can't find the link.
+                </div>
+            {% endif %}
+                
+
+            <a class="withdraw-button bg-2" href="{% url 'panel:withdrawal' %}">Withdraw</a>
+
+
+        {% endif %}
+
+        <main class="main-wrap">
+            {% block content %}
+            
+            {% endblock content %}
+        </main>
+
+<!--        <section id="banner">-->
+<!--            <div class="box">-->
+<!--                <h2>Win valuable veve prizes</h2>-->
+<!--                <p>From as low as $1, you can try your luck and win hundreds of Veve prizes. Visit Vevetale.com today to win NFTs, Comics, OMI, Gems, and shopping discounts, and lot more!</p>-->
+<!--                <img src="{% static 'img/x.jpeg' %}" alt="" class="img-fluid mb-4">-->
+<!--                <a href="https://vevetale.com/" target="_blank">Try Your Luck From $1 Only</a>-->
+<!--            </div>-->
+<!--        </section>-->
+
+        <footer>
+            <div class="footer-links">
+                <p class="copyright">2024, FREEOMI.COM - All rights reserved.</p>
+                <p><a href="{% url 'landing:gdpr' %}">GDPR</a> | <a href="{% url 'landing:blog' %}">Blog</a> | <a href='https://www.okx.com/join/9435265'>Free Ecomi Wallet</a></p>
+            </div>
+        </footer>
+
+
+        {% block script %}
+        
+        {% endblock script %}
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="{% static 'js/feather-icon/feather.min.js' %}"></script>
+        <script src="{% static 'js/feather-icon/feather-icon.js' %}"></script>
+
+        <script src="{% static 'js/app.js' %}"></script>
+
+        <script src="{% static 'js/main.js' %}"></script>
+
+        <script data-host="https://regalanalytics.net" data-dnt="false" src="https://regalanalytics.net/js/script.js" id="ZwSg9rf6GA" async defer></script>
+    </body>
+
+
+</html>

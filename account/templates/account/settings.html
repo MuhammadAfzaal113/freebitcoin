@@ -1,0 +1,142 @@
+
+{% extends 'landing/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="new-banner settings-bg">
+    <div class="overlay"></div>
+    
+    <div class="banner-content">
+        <h2>Settings</h2>
+        <p>(View or edit your profile)</p> 
+    </div>
+</div>
+
+<div class="general settings py-5">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+                
+                
+                <ul class="nav nav-tabs mb-4" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link {% if step == 'withdrawal' %}active{% endif %}" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Change Withdrawal</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link {% if step == 'email' %}active{% endif %}" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Change Email Address</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link {% if step == 'password' %}active{% endif %}" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Change Password</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade {% if step == 'withdrawal' %}show active{% endif %}" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        
+                        <form method="POST" id="changeAddressForm" class="pill-form">
+                            {% csrf_token %}
+                            <div class="mb-4">
+                                <label for="EcomiAddress" class="form-label">Ecomi address</label>
+                                <input type='text' name="withdraw_address" class="form-control" id="EcomiAddress" value="{{ withdrawal_form.withdraw_address.value }}">
+                                <div class="form-errors">
+                                    {% for error in withdrawal_form.withdraw_address.errors %}
+                                        <small class="text-danger">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="PasswordEcomi" class="form-label">Password</label>
+                                <input name="password" type="password" class="form-control" id="PasswordEcomi">
+                                <div class="form-errors">
+                                    {% for error in withdrawal_form.password.errors %}
+                                        <small class="text-danger">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="step" value="withdrawal">
+
+                            <button class="btn btn-primary" type="submit">Change Withdrawal Address</button>
+                        </form>
+
+                    </div>
+
+                    <div class="tab-pane fade {% if step == 'email' %}show active{% endif %}" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                        <form method="POST" id="changeAddressForm" class="pill-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="step" value="email">
+
+                            <div class="mb-4">
+                                <label for="EmailAddressFormID" class="form-label">Email address</label>
+                                <input type='email' name="email" class="form-control" id="EmailAddressFormID" value="{{ email_form.email.value }}">
+                                <div class="form-errors">
+                                    {% for error in email_form.email.errors %}
+                                        <small class="text-danger">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="PasswordEcomi" class="form-label">Password</label>
+                                <input name="password" type="password" class="form-control" id="PasswordEcomi">
+                                <div class="form-errors">
+                                    {% for error in email_form.password.errors %}
+                                        <small class="text-danger">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">Change Email Address</button>
+                        </form>
+                        
+                    </div>
+
+                    <div class="tab-pane fade {% if step == 'password' %}show active{% endif %}" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+
+                        <form method="POST" id="changeAddressForm" class="pill-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="step" value="password">
+
+                            <div class="mb-4">
+                                <label for="CurrentPasswordEcomi" class="form-label">Current Password</label>
+                                <input name="password" type="password" class="form-control" id="CurrentPasswordEcomi">
+                                <div class="form-errors">
+                                    {% for error in password_form.password.errors %}
+                                        <small class="text-danger">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="PasswordEcomi" class="form-label">New Password</label>
+                                <input name="new_password" type="password" class="form-control" id="PasswordEcomi">
+                                <div class="form-errors">
+                                    {% for error in password_form.new_password.errors %}
+                                        <small class="text-danger">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="ConfirmPasswordEcomi" class="form-label">Confirm Password</label>
+                                <input name="confirm_password" type="password" class="form-control" id="ConfirmPasswordEcomi">
+                                <div class="form-errors">
+                                    {% for error in password_form.confirm_password.errors %}
+                                        <small class="text-danger">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">Change Password</button>
+                        </form>
+                        
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

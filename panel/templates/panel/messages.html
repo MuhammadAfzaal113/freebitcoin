@@ -1,0 +1,43 @@
+
+
+{% extends 'landing/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="general messages">
+        <div class="container">
+            <div class="main-content">
+                <div class="inner-pages-wrapper">
+                    <div class="inner-pages-main-view">
+                        <h1>Important Messages</h1>
+                        
+                        {% if messages_posts %}
+                            <table class="table-1">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Date</th>
+                                </tr>
+                                
+                                {% for message in messages_posts %}
+                                    <tr>
+                                        <td><a href="{% url 'panel:message-detail' message.slug %}" class="message-unread">{{ message.title }}</a></td>
+                                        <td><a href="{% url 'panel:message-detail' message.slug %}" class="message-unread">{{ message.created }}</a></td>
+                                    </tr>
+                                {% endfor %}
+                                
+                            </table>
+                        {% else %}
+
+                            <div class="bg-secondary py-5 px-2 mt-5 rounded d-flex align-items-center justify-content-center">
+                                <p class="fs-4 text-light mb-0">No messages yet</p>
+                            </div>
+                            
+                        {% endif %}
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

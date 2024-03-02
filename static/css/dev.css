@@ -1,0 +1,682 @@
+body {
+    background: white;
+    font-family: Ubuntu, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root{
+    --main: #0190C8;
+    --other: #ed0000;
+    --light: #a18ec6;
+    --dark: #182961;
+}
+
+.text-danger{
+    color: red !important;
+}
+
+
+/* Loader */
+
+#loader_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000000;
+    background: rgb(0 18 33 / 76%);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#loader_container.active {
+    display: flex;
+}
+
+#loader_span {
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    margin: 9px;
+    border: 5px solid #fff;
+    border-top-color: rgb(255, 255, 255);
+    border-top-style: solid;
+    border-top-width: 5px;
+    border-top: 5px solid #299ef7;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    animation-play-state: paused;
+}
+
+#loader_span.play {
+    animation-play-state: running;
+}
+
+header.loggedin {
+    background: none;
+    position:static;
+}
+
+header.loggedin .navbar-default .navbar-nav > li > a, header.loggedin .navbar-default .navbar-nav>li>a:focus {
+    color:#333;
+}
+
+.home .top {
+    background-image: url('../img/freebitcoin/home-main-banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: static;
+    min-height: 850px;
+}
+
+body > main > section > section.top > div > div > div.slogan > p{
+    line-height: 2;
+}
+
+.home .top .coin-name {
+    color: var(--other);
+}
+
+.home .reg i {
+    background: url(../img/freebitcoin/sprites.png) no-repeat 0 0px;
+    filter: hue-rotate(174deg);
+    width: 107px !important;
+    height: 106px !important;
+}
+
+.home .game i {
+    width: 107px !important;
+    height: 106px !important;
+}
+
+.home .coin i {
+    width: 107px !important;
+    height: 106px !important;
+}
+
+.home .feature-wrapper .feature{
+    transition: .5s;
+    background: none !important;
+    border-radius: .5rem !important;
+}
+.home .feature-wrapper .feature .feature-icon{
+    color: var(--dark);
+    height: 121px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.home .feature-wrapper .feature .feature-icon svg{
+    transform: scale(4);
+    transform-origin: center;
+}
+/*
+.home .feature-wrapper .feature:hover { color: white !important; background-color: var(--dark) !important; transform: translateY(-10px); transition: .1s !important; }
+
+.home .feature-wrapper .feature:hover .feature-icon{
+    color: #fff;
+}*/
+
+.home .feature .header,
+.home .feature .text {
+    color: var(--bs-dark);
+    transition: .3s;
+}
+/*
+.home .feature-wrapper .feature:hover .header,
+.home .feature-wrapper .feature:hover .text {
+    color: #fff;
+}*/
+
+
+.navbar-light .navbar-brand, .navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+    width: 200px;
+}
+.navbar-brand img {
+    height: 70px;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+.form-errors small{
+    color: #62151c !important;
+}
+
+
+.general .header-wrapper {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 2rem;
+    max-width: 850px;
+    text-align: center;
+}
+.general .header-wrapper  p{
+    color: #fff;
+}
+.general .banner-wrapper img{
+    height: 504px;
+    object-fit: cover;
+    object-position: top;
+}
+
+@media(min-width:990px) {
+    header {
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;    
+        background:none;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+        color:white;
+    }    
+
+    .loggedin .navbar-light .navbar-nav .nav-link {
+        color:rgba(0, 0, 0, 0.5);
+    }    
+}
+
+
+@media(max-width:767px){
+    .navbar-default .navbar-nav > li > a,.navbar-default .navbar-nav>li>a:focus {
+        color:black;
+        cursor:pointer;
+    }
+
+    .home .feature-wrapper .feature:first-child {
+        background-image:none;
+    }
+
+    .home .top {
+        padding-top:0;
+    }
+
+    .home .top p {
+        margin-bottom:40px;
+    }
+}
+
+@media(min-width:768px){
+    .navbar-default .navbar-nav > li > a,.navbar-default .navbar-nav>li>a:focus {
+        color:white;
+        cursor:pointer;
+    }
+
+    /* .home .feature-wrapper .feature:first-child {
+        background: url('../img/freebitcoin/sprites.png') no-repeat -40px -410px !important;
+        filter: hue-rotate(174deg);
+    } */
+}
+
+/* .home .feature-wrapper .feature:first-child .header,.home .feature-wrapper .feature:first-child .text {
+    color:white;
+} */
+
+@media (max-width: 540px){
+    .home .top {
+        min-height: 746px;
+    }
+}
+
+.home .feature .hour {
+    background: url('../img/freebitcoin/sprites.png') no-repeat -646px -2px !important;
+    width: 115px;
+    height: 115px;
+    filter: drop-shadow(2px 4px 5px black);
+}
+
+.navbar-coins.bg-1 {
+    background-color:  var(--other) !important;
+}
+
+.home .login-wrapper, .home .register-wrapper {
+    background: var(--main) !important;
+}
+
+.home .login-wrapper label, .home .register-wrapper label, .home a.forgot-link {
+    color:#c5c9da !important;   
+}
+
+
+.home .login-wrapper input, .home .register-wrapper input {
+    background: #fff !important;
+    border-radius:0;
+    border: 0;
+    color: var(--dark);
+}
+
+.home .login-wrapper input::placeholder, .home .register-wrapper input::placeholder {
+    opacity: 0;
+    color: var(--light);
+}
+
+.home .register-login .main-button {
+    width: 100%;
+    color: var(--other);
+    border-radius: 0.3rem;
+    border: none;
+    outline: none;
+    margin-top: 2rem;
+}
+
+.home .stat .num {
+    color:  var(--main);
+    margin: 0px 0 6px;
+    font-weight: 900;
+    margin-top: -20px;
+}
+
+.home .stat {
+    background:white;
+    border-bottom:7px solid  var(--main);
+}
+
+.home .stat .text {
+    margin-top:-10px;
+    font-size: 14px;
+    color: #5f5f5f;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+
+.home .stat {
+    -webkit-box-shadow: 7px 10px 89px -24px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 10px 89px -24px rgba(0,0,0,0.75);
+    box-shadow: 7px 10px 89px -24px rgba(0,0,0,0.75);
+    border-radius: 0.5rem;
+}
+
+.home .reg i {
+    background: url("../img/freebitcoin/sprites.png") no-repeat 0 0px !important;
+    width: 107px;
+    height: 106px;
+    filter: hue-rotate(174deg);
+}
+
+.home .game i {
+    background: url("../img/freebitcoin/sprites.png") no-repeat -219px 0px !important;
+    width: 107px;
+    height: 106px;
+    filter: hue-rotate(174deg);
+}
+
+.home .coin i {
+    background: url("../img/freebitcoin/sprites.png") no-repeat -423px 0px !important;
+    width: 107px;
+    height: 106px;
+    filter: hue-rotate(174deg);
+}
+
+.home .what-is-logo {
+    width: 149px;
+    height: 146px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.home .what-is-header {
+    font-size: 34px;
+    margin-bottom: -5px;
+    color: white;
+    text-align: center;
+}
+
+.home .banner img {
+    width: 100%;
+    max-height: 530px;
+    object-fit: cover;
+}
+
+.home .partners h2 {
+    display:none;
+}
+
+.home .what-is-logo {
+    width: 170px;
+    height: 170px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+
+.home .reg i {
+    background: url("../img/freebitcoin/sprites.png") no-repeat 0 0px;
+    width: 207px;
+    height: 206px;
+    filter: hue-rotate(174deg);
+}
+
+.home .game i {
+    background: url("../img/freebitcoin/sprites.png") no-repeat -210px 0px;
+    width: 207px;
+    height: 206px;
+    filter: hue-rotate(174deg);
+}
+
+.home .coin i {
+    background: url("../img/freebitcoin/sprites.png") no-repeat -423px 0px;
+    width: 207px;
+    height: 206px;
+    filter: hue-rotate(174deg);
+}
+
+.home .feature .withdrawl {
+    background: url("../img/freebitcoin/sprites.png") no-repeat -799px -2px;
+    width: 115px;
+    height: 115px;
+    filter: hue-rotate(174deg);
+}
+
+.home .feature .lottery {
+    background: url("../img/freebitcoin/sprites.png") no-repeat -646px -128px;
+    width: 115px;
+    height: 115px;
+    filter: hue-rotate(174deg);
+}
+
+.home .feature .referral {
+    background: url("../img/freebitcoin/sprites.png") no-repeat -780px -128px;
+    width: 153px;
+    height: 115px;
+    filter: hue-rotate(174deg);
+}
+
+.home .what-is-logo {
+    background: url("../img/omi_icon.png") no-repeat 0 0px;
+    background-size: contain;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+
+.color-1 {
+    color: var(--main) !important;
+}
+.color-2 {
+    color: var(--other) !important;
+}
+
+.color-dark{
+    color: var(--dark) !important;
+}
+.color-main{
+    color: var(--main) !important;
+}
+.color-other{
+    color: var(--other) !important;
+}
+
+.bg-main {
+    background-color: var(--main) !important;
+}
+.bg-other {
+    background-color: var(--other) !important;
+}
+.bg-dark {
+    background-color: var(--dark) !important;
+}
+
+.bg-1 {
+    background-color: var(--main) !important;
+}
+.bg-2 {
+    background-color: var(--other) !important;
+}
+.bg-3 {
+    background-color: var(--dark) !important;
+}
+
+.border-1 {
+    border: 1px solid var(--light) !important;
+}
+.border-2 {
+    border: 1px solid #00c4b3 !important;
+}
+
+.navbar-twitter {
+    background: url("../img/freebitcoin/sprites.png") no-repeat 0 0px;
+    background-position: -269px -246px;
+    position: relative;
+    top: 5px;
+    filter: hue-rotate(28deg);
+}
+
+.navbar-logout {
+    background: url("../img/freebitcoin/sprites.png") no-repeat 0 0px;
+    background-position: -329px -246px;
+    filter: hue-rotate(174deg);
+}
+
+.navbar-logout:hover {
+    background: black url("../img/freebitcoin/sprites.png") no-repeat 0 0px;
+    background-position: -405px -246px;
+    filter: hue-rotate(174deg);
+}
+
+.new-banner{
+    padding: 7rem 2rem;
+    display: grid;
+    place-content: center;
+    background-position: center !important;
+    background-size: cover !important;
+    position: relative;
+}
+.new-banner.settings-bg{
+    background: url(../img/freebitcoin/settings.jpg);
+}
+.new-banner.faq-bg{
+    background: url(../img/freebitcoin/faq2.jpg);
+}
+.new-banner.stats-bg{
+    background: url(../img/freebitcoin/home-bottom-banner.jpg);
+    background-position: bottom !important;
+}
+.new-banner.withdraw-bg{
+    background: url(../img/freebitcoin/home-main-banner.jpg);
+}
+.new-banner .overlay{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(2, 9, 22, 0.701);
+}
+.new-banner .banner-content{
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: #fff;
+}
+.new-banner .banner-content h2{
+    color: #fff;
+    font-weight: 800;
+    font-size: 3rem;
+}
+.new-banner .banner-content p{
+    font-weight: 500;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+#pills-tab .nav-item button{
+    font-weight: bold;
+}
+
+
+#pills-tabContent .pill-form{
+    max-width: 400px;
+}
+
+.withdraw-form-extra p{
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 0;
+}
+
+
+.stat-head{
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+
+.alert{
+    z-index: 100000000000000000000000;
+}
+
+.free-link-rolls .card.active{
+    background: gainsboro;
+}
+
+#banner{
+    padding: 4rem 2rem;
+    display: flex;
+    place-content: center;
+    text-align: center;
+}
+
+#banner .box{
+    padding: 3rem 4rem;
+    color: var(--other);
+    width: 100%;
+    max-width: 900px;
+}
+
+#banner .box img{
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+}
+
+#banner .box h2{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 4rem;
+    margin-bottom: 3rem;
+}
+#banner .box p{
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: black;
+}
+
+#banner .box a{
+    background-color: var(--other);
+    border: 3px solid #fff;
+    border-radius: 6px;
+    color: #fff!important;
+    display: table;
+    line-height: 42px;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 10px 10px #ccc;
+    font-size: 1.6rem;
+    margin: 0 auto;
+}
+
+.banners-480{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+.banners-480 img {
+    margin: 1rem 1rem;
+    transition: .5s;
+}
+.banners-480 img:hover{
+    transform: translateY(-5px) scale(1.1);
+}
+
+.banner-large {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+.banner-large img {
+    margin: 0 .5rem;
+}
+.banner-large.single img{
+    height: 150px;
+    margin-bottom: 4rem;
+}
+
+.redeem-button{
+    float: none;
+}
+
+.dbox {
+    padding: 1.5rem 1rem;
+    font-size: 1.2rem !important;
+    align-self: stretch;
+}
+
+#redeemModal .modal-dialog{
+    max-width: 700px;
+    color: black;
+}
+#redeemModal .modal-body{
+    padding: 2rem;
+}
+#redeemModal form{
+    text-align: center;
+    margin-top: 2rem;
+}
+#redeemModal form input{
+    padding: 1.9rem .9rem !important;
+    font-size: 1.1rem;
+}
+#redeemModal form label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+#redeemModal form label span{
+    margin-right: 2rem;
+    font-size: 1.4rem;
+}
+#redeemModal form label p{
+    font-size: .8rem;
+    color: #fff;
+    background-color: var(--bs-primary);
+    margin-bottom: 0;
+    cursor: pointer;
+    padding: .5rem .8rem;
+    border-radius: .5rem;
+}
+#redeemModal form button{
+    width: 250px;
+    margin-top: 1rem;
+    padding-top: .9rem;
+    padding-bottom: .9rem;
+}
+
+
+@media (max-width: 600px) {
+    #banner{
+        padding: 2rem 0rem;
+    }
+    #banner .box{
+        padding: 2rem 1rem;
+    }
+    #banner .box h2{
+        font-size: 2rem;
+    }
+    #banner .box p{
+        font-size: 1rem;
+    }
+    #banner .box a{
+        font-size: 1rem;
+    }
+}

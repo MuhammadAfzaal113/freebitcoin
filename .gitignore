@@ -1,0 +1,8 @@
+.idea/
+.DS_Store
+bitcoin/
+/__pycache__/
+.env
+venv
+new_venv
+bitcoin

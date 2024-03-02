@@ -1,0 +1,107 @@
+
+
+{% extends 'landing/base.html' %}
+{% load static %}
+{% load mytags %}
+
+
+{% block content %}
+
+<div class="main-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-10 offset-lg-1">
+                
+                <h2>Earn More</h2>
+
+                <div class="row align-items-stretch mt-3 mb-5">
+                    <div class="col-md-12">
+                        <div class="bg-info text-light rounded dbox">
+                            You can earn a lot more tokens with our free surveys and offers. Then redeem them to get more OMI tokens.
+                        </div>
+                    </div>
+                    <div class="ms-auto col-md-6 mt-5">
+                        <button class="redeem-button main-button-2 bg-2 mb-5 ms-auto me-0" data-bs-toggle="modal" data-bs-target="#redeemModal">Redeem tokens to OMI</button>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="redeemModal" tabindex="-1" aria-labelledby="redeemModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="redeemModalLabel">Redeem your tokens in OMI</h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Redeem your tokens to your Crypto balance. The value is shown is USD but the balance would be added to your Crypto balance in the site.</p>
+                                <p>If you got kicked out of a survey click the menu to contact CPX and they will look into your case. Check several times per day if there are new surveys for you!</p>
+
+                                <p>{{ tokens_per_usd }} tokens = 1$</p>
+                                <p>Your Tokens: {{ request.user.token_balance_text }} tokens</p>
+                                <p>Your Tokens in OMI: {{ request.user.token_balance_in_omi }} OMI</p>
+                                <p>MINIMUM REDEMPTION AMOUNT: {{ min_withdraw }} TOKENS</p>
+
+                                <form action="{% url 'panel:redeem' %}" method="post">
+
+                                    <div class="mb-3">
+                                        <label for="amount_id" class="form-label">
+                                            <span>Amount</span>
+                                            <p data-amount="{{ request.user.token_balance }}">Redeem All</p>
+                                        </label>
+                                        <input required name="amount" type="number" class="form-control" id="amount_id" placeholder="Enter amount of tokens to redeem">
+                                    </div>
+
+                                    <p class="text-danger my-2"></p>
+
+                                    <button type="submit" class="btn btn-primary btn-lg">Redeem</button>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="advertisers-wrapper">
+                    <div class="advertisers">
+                        <div class="iframe-wrapper">
+                            <a class="link" data-tab="bitlab">
+                                <img src="{% static 'img/tokens/bitlabs.jpg' %}" width="50px">
+                            </a>
+                            <a class="link-text">BitLabs</a>
+                        </div>
+                        <div class="iframe-wrapper">
+                            <a class="link" data-tab="cpx">
+                                <img src="{% static 'img/tokens/cpxresearch.png' %}" width="50px">
+                            </a>
+                            <a class="link-text">CPXResearch</a>
+                        </div>
+                        <div class="iframe-wrapper">
+                            <a class="link" data-tab="timewall">
+                                <img src="{% static 'img/tokens/timewall.png' %}" width="50px">
+                            </a>
+                            <a class="link-text">TimeWall</a>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+
+                    iframe {
+                        height: 1000px;
+                        width: 100%;
+                        padding: 0px;
+                    }
+
+                </style>
+
+                <div class="offerwalls-output"></div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock content %}
+    

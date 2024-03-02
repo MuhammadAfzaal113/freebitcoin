@@ -1,0 +1,113 @@
+
+{% extends 'landing/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="new-banner withdraw-bg">
+    <div class="overlay"></div>
+    
+    <div class="banner-content">
+        <h2>Withdrawals</h2>
+        <p>(Make a withdrawal and check your withdrawals)</p> 
+    </div>
+</div>
+
+<div class="general settings py-5">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+                
+                
+                <ul class="nav nav-tabs mb-4" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Withdraw</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">My Withdrawals</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        
+                        <form method="POST" id="changeAddressForm" class="pill-form">
+
+                            {% csrf_token %}
+
+                            <div class="mb-4">
+                                <label for="WithdrawAmountID" class="form-label">Amount</label>
+                                <input type='number' step="0.001" name="amount" class="form-control" id="WithdrawAmountID">
+                                <div class="form-errors">
+                                    {% for error in form.amount.errors %}
+                                        <small class="text-danger">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="mb-4 withdraw-form-extra">
+                                <label class="form-label">Transaction Fees</label>
+                                <p>0.00000000 ECOMI</p>
+                            </div>
+
+                            <div class="mb-4 withdraw-form-extra">
+                                <label class="form-label">Amount to be sent</label>
+                                <p><span id="WithdrawAmountView">0.00000000</span> ECOMI</p>
+                            </div>
+
+                            <div class="mb-4 withdraw-form-extra">
+                                <label class="form-label">Ecomi Address</label>
+                                <p>{{ user.profile.withdraw_address }}</p>
+                                <small>Got to <a href="{% url 'account:settings' %}">Settings</a> to change address.</small>
+                            </div>
+
+                            <button class="btn btn-success btn-lg w-50" type="submit">Withdraw</button>
+                        </form>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        
+                        
+                        {% if withdrawals.count > 0 %}
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    {% for req in withdrawals %}
+                                        <tr>
+                                            <td>{{ req.address }}</td>
+                                            <td>{{ req.get_amount }}</td>
+                                            <td>
+                                                {{ req.get_status_html }}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                        
+                                </tbody>
+                            </table>
+                            
+                        {% else %}
+                            <div class='bg-secondary text-white p-3 rounded'>
+                                There are no withdrawals.
+                            </div>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

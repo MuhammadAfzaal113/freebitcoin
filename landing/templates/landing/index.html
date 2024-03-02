@@ -1,0 +1,279 @@
+
+{% extends 'landing/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<section class="home">
+    <section class="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7 col-md-8 col-lg-8 slogan">
+                    <h1>Free <span class="coin-name">ECOMI</span></h1>
+                    <p style="max-width: 400px;">Win up to 300 USD worth of ECOMI tokens (OMI) every hour. Instant withdrawals and low minimum threshold - 40,000 OMI. Get 50% of what your referrals make - 100% FREE OF CHARGE!</p>
+                </div>
+                <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
+                    <div class="register-login">
+                        <form id="login_form" class="login-wrapper wrapper bg-1" action="{% url 'account:login' %}">
+                            {% csrf_token %}
+                            <h2>Login Account</h2>
+                            <input type="hidden" name="_token" value="pEGcYd3uxYB3Cq7snWx8dIXbvPFyYZe1IE9HZrPq">
+
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" name="email" class="form-control email"
+                                    placeholder="Email Address" tabindex="1"
+                                    value="">
+                                <div class="form-errors"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" name="password" class="form-control password"
+                                    placeholder="Password" tabindex="2">
+                                <div class="form-errors"></div>
+                            </div>
+
+                            <div class="h-captcha" id="captcha-1" data-theme="dark"></div>
+                            
+                            <script type="text/javascript">
+                                var yourFunction = function () {
+                                  var widgetID = hcaptcha.render('captcha-1', { sitekey: '{{ site_key }}' });
+                                };
+                            </script>
+
+                            <script
+                                src="https://js.hcaptcha.com/1/api.js?onload=yourFunction&render=explicit"
+                                async
+                                defer
+                            ></script>
+                            
+                            <div id="hcaptcha-errors" class="form-errors"></div>
+
+                            <p class="login-forgot-pass">
+                                <a href="#" class="forgot-link">forgot password</a>
+                            </p>
+                            <div class="clearfix"></div>
+                            <button type="submit" class="main-button bg-other login" tabindex="4" style="margin-top: 1rem;">
+                                LOGIN!
+                            </button>
+                            <div class="error"></div>
+                        </form>
+
+                        <form id="register_form" class="register-wrapper wrapper bg-1" action="{% url 'account:register' %}">
+                            {% csrf_token %}
+                            <h2>Register Account</h2>
+                            <input type="hidden" name="_token" value="pEGcYd3uxYB3Cq7snWx8dIXbvPFyYZe1IE9HZrPq">
+
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" name="email" class="form-control email"
+                                    placeholder="Email Address" tabindex="1"
+                                    value="">
+                                <div class="form-errors"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" name="password" class="form-control password"
+                                    placeholder="Password" tabindex="2">
+                                <div class="form-errors"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" name="confirm_password" class="form-control confirm-password"
+                                    placeholder="Confirm Password" tabindex="3">
+                                <div class="form-errors"></div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <button type="submit" class="main-button bg-other register"
+                                tabindex="4">REGISTER!</button>
+                            <div class="error"></div>
+                        </form>
+
+                        <form id="forget_form" class="forgot-wrapper wrapper bg-1" action="{% url 'account:forget_password' %}">
+                            {% csrf_token %}
+                            <h2>forgot password</h2>
+                            <input type="hidden" name="_token" value="pEGcYd3uxYB3Cq7snWx8dIXbvPFyYZe1IE9HZrPq">
+
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" name="email" class="form-control email"
+                                    placeholder="Email Address" tabindex="1"
+                                    value="">
+                                <div class="form-errors"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>New Password</label>
+                                <input type="password" name="password" class="form-control new-password"
+                                    placeholder="Password" tabindex="2">
+                                <div class="form-errors"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Confirm New Password</label>
+                                <input type="password" name="confirm_password"
+                                    class="form-control confirm-new-password"
+                                    placeholder="Confirm Password" tabindex="3">
+                                <div class="form-errors"></div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <button type="submit" class="main-button bg-other forgot"
+                                tabindex="4">RESET!</button>
+                            <div class="error"></div>
+                        </form>
+
+                        <div class="h-captcha"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div style="position: fixed; display: flex; justify-content: space-between; width: 100%; z-index: 999;">
+            <div class="iframe-container" style="order: 1;">
+               <iframe src='https://ads.coinserom.com/publisher?adsunit=&serom=3131373433&size=300x250' style='width:300px;height:250px;border:0px;padding:0;background-color: transparent;overflow: auto;'>
+            </iframe>
+            </div>
+            <div class="iframe-container" style="order: 2;">
+                <iframe src='https://ads.coinserom.com/publisher?adsunit=&serom=3131373433&size=300x250' style='width:300px;height:250px;border:0px;padding:0;background-color: transparent;overflow: auto;'>
+            </iframe>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="top-stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="stat reg">
+                        <i class=""></i>
+                        <div class="num">{{ stat_users }}</div>
+                        <div class="text">Registered Users</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="stat game">
+                        <i></i>
+                        <div class="num">{{ stat_games }}</div>
+                        <div class="text">Games Played</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="stat coin">
+                        <i></i>
+                        <div class="num">{{ stat_earns }}</div>
+                        <div class="text">OMI Won By Users</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mid">
+        <div class="container">
+                                        
+            <h1 class="color-1">Free OMI Faucet</h1>
+            <h2 class="color-1">Features</h2>
+
+            <div class="row feature-wrapper">
+                <div class="feature col-sm-6 col-md-3" style="background-color:#182961 !Important;">
+                    
+                    <span class="feature-icon" style="color:white;"><i data-feather='clock'></i></span>
+
+                    <div class="text-wrapper">
+                        <div class="header" style="color:white;">
+                            FREE OMI Every Hour
+                        </div>
+                        <div class="text"  style="color:white;">
+                            Get Free OMI absolutely free every hour by playing a very simple game and you can win up to $300 in Free OMI! With a click of a button your wallet will be rewarded!
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="feature col-sm-6 col-md-3">
+                    
+                    <span class="feature-icon"><i data-feather='zap'></i></span>
+                    
+                    <div class="text-wrapper">
+                        <div class="header">
+                            Instant Withdrawals
+                        </div>
+                        <div class="text">
+                            You don&#039;t have to wait to get paid. With freeomi.com you would get paid instantly once you reach our very minimum withdrawal amount. This OMI Faucet will giveaway free OMI after clicking a button once an hour.
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="feature col-sm-6 col-md-3">
+                    
+                    <span class="feature-icon"><i data-feather='bar-chart'></i></span>
+
+                    <div class="text-wrapper">
+                        <div class="header">
+                            Referral Program
+                        </div>
+                        <div class="text">
+                            You get 50% of whatever your friends earn with Free OMI! That&#039;s right, 50%! Accordingly, they will get 50% from what their referrals make and would be incentivized to participate, so bring in as many friends as you can. The sky is the limit.
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="feature col-sm-6 col-md-3">
+                    
+                    <span class="feature-icon"><i data-feather='award'></i></span>
+
+                    <div class="text-wrapper">
+                        <div class="header">
+                            FREE Promotions
+                        </div>
+                        <div class="text">
+                            You don&#039;t have to wait 1 hour to get free OMI! Follow us on Twitter to get free promo codes that will allow you to get extra rolls without waiting, this will increase your chances to win more - and this is why freeomi.com is 100% unique.
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+    
+        </div>
+        <div style="padding: 20px 5px">
+            <div class="iframe-container text-center" style="flex: 3;">
+                <iframe src='https://ads.coinserom.com/publisher?adsunit=&serom=3131373433&size=728x90' style='width:728px;height:90px;border:0px;padding:0;background-color: transparent;overflow: auto;'></iframe>
+            </div>
+        </div>
+    </section>
+    <div class="clearfix"></div>
+
+    <section class="bot">
+        <div class="banner d-none d-md-block">
+            <img src="{% static 'img/freebitcoin/home-bottom-banner.jpg' %}"
+                alt="Free Ecomi Cryptocurrency">
+        </div>
+        <div class="what-is">
+            <div class="what-is-logo d-none d-sm-block"></div>
+            <div class="what-is-header">What is ECOMI?</div>
+            <div class="what-is-text">
+                ECOMI is a technology company based in Singapore which aims to lead the way in the emerging digital collectibles space, as well as protection of digital assets. ECOMI offers a one-stop-shop for digital collectibles through the VeVe app bringing pop culture and entertainment into the 21st century.
+            </div>
+        </div>
+        <div style="padding: 20px 5px">
+            <div class="iframe-container text-center" style="flex: 3;">
+                <iframe src='https://ads.coinserom.com/publisher?adsunit=&serom=3131373433&size=728x90' style='width:728px;height:90px;border:0px;padding:0;background-color: transparent;overflow: auto;'></iframe>
+            </div>
+        </div>
+    </section>
+
+</section>
+{% endblock content %}

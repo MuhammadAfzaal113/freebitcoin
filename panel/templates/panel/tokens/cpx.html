@@ -1,0 +1,62 @@
+<h4 class="text-redeem px-md-5 font-weight-bold text-justify text-danger mb-5 pb-4">IMPORTANT NOTE: It may take up to 12 hours for the tokens to credit into your balance after you complete a survey.</h4>
+<script>
+    const script1 = {
+        div_id: "fullscreen",
+        theme_style: 1,
+        order_by: 2,
+        limit_surveys: 7
+    };
+    
+    const config = {
+        general_config: {
+            app_id: "{{ app_id }}",
+            ext_user_id: "{{ user_id }}",
+            email: "{{ email }}",
+            username: "{{ email }}",
+            subid_1: "https://freeomi.com/",
+        },
+        style_config: {
+            text_color: "#2b2b2b",
+            survey_box: {
+                topbar_background_color: "#ffaf20",
+                box_background_color: "white",
+                rounded_borders: true,
+                stars_filled: "black",
+            },
+        },
+        script_config: [script1],
+        debug: true,
+        useIFrame: true, 
+        iFramePosition: 1,
+        functions: {
+            no_surveys_available: () =>
+            {
+                console.log("no surveys available function here");
+            },
+            count_new_surveys: (countsurveys) =>
+            {
+                console.log("count surveys function here, count:", countsurveys);
+            },
+            get_all_surveys: (surveys) =>
+            {
+                console.log("get all surveys function here, surveys: ", surveys);
+            },
+            get_transaction: (transactions) =>
+            {
+                console.log("transaction function here, transaction: ", transactions);
+            }
+        }  
+    };
+    window.config = config;
+</script>
+
+<style>
+    .inner-pages-wrapper p {
+        margin-bottom: 0px !important;
+    }
+</style>
+
+<div style="max-width: 100%; margin: auto" id="fullscreen"></div>
+<div id="no_surveys"></div>
+
+<script type="text/javascript" src="https://cdn.cpx-research.com/assets/js/script_tag_v2.0.js"></script>

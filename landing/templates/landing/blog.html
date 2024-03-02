@@ -1,0 +1,54 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="articles-background">
+        <div style="background-color: #182961">
+            <div class="articles-banner" style="background-image: url({% static 'img/freebitcoin/home-main-banner.jpg' %})"></div>
+        </div>
+        <div class="title-blog-container">
+            <h1>Blog</h1>
+            <span>Freeomi.com Blog</span>
+        </div>
+        <div class="container blog-container" style="min-height: 750px;">
+            <div class="general">
+                <div class="row mb-5">
+                    <div class="row">
+                    </div>
+                </div>
+
+                <div class="recent-posts-separator mb-5">RECENT POSTS</div>
+                
+                <div class="row">
+                    
+                    {% for post in posts %}
+                    <div class="col-lg-4 mb-4">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ post.get_content_image }}"
+                                alt="{{ post.title }}">
+                            <div class="card-body">
+                                <a class="text-dark text-center" href="{% url 'landing:blog-post' post.slug %}">
+                                    <h5 class="card-title">{{ post.title }}</h5>
+                                    <p>{{ post.get_content_text|truncatechars:100 }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    
+                    {% if not posts %}
+
+                    <div class="bg-secondary py-5 px-2 mt-4 rounded d-flex align-items-center justify-content-center">
+                        <p class="fs-4 text-light mb-0">No posts yet</p>
+                    </div>
+                        
+                    {% endif %}
+                        
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
