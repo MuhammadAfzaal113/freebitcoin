@@ -180,7 +180,7 @@ def token_current_price(token_symbol):
 
         return price
     except Exception:
-        return 1
+        return 0.001
 
 
 def get_last_n_days(n: int):
