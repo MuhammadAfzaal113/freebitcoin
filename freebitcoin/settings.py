@@ -8,7 +8,8 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['45.77.105.55', 'freeomi.com', 'www.freeomi.com', '127.0.0.1', 'aff6-113-203-199-3.ngrok-free.app']
+ALLOWED_HOSTS = ['45.77.105.55', 'freeomi.com', 'www.freeomi.com']
+
 
 # Application definition
 
@@ -20,12 +21,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # 'django.contrib.sites',  # Required for django-allauth
-    # 'allauth',
-    # 'allauth.account',
-    # 'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.twitter',
-
     'account',
     'panel',
     'landing',
@@ -36,13 +31,6 @@ INSTALLED_APPS = [
 
 CKEDITOR_UPLOAD_PATH = "ckedit/uploads/"
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    # 'allauth.account.auth_backends.AuthenticationBackend',
-    # 'oauth2_provider.backends.OAuth2Backend',
-    # 'social_core.backends.twitter.TwitterOAuth',
-]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -52,6 +40,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 AUTH_USER_MODEL = 'account.User'
 
@@ -75,6 +64,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'freebitcoin.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -90,16 +80,6 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'HOST': 'localhost',
-#         'NAME': 'freebit',
-#         'USER': 'postgres',
-#         'PASSWORD': 'postgres',
-#         'port': '5432'
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -119,6 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -130,19 +111,23 @@ USE_I18N = True
 
 USE_TZ = True
 
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "assets"),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
+
 
 PRINT_LOG = True
 OFF_EMAIL = False
 
 PASSWORD_RESET_TIMEOUT = 86400
+
 
 # Emails settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -152,6 +137,7 @@ EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=True, cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='')
+
 
 LOGGING = {
     'version': 1,
@@ -188,6 +174,7 @@ LOGGING = {
         }
     }
 }
+
 
 LOGIN_REDIRECT_URL = "panel:index"
 LOGIN_URL = "landing:landing"
