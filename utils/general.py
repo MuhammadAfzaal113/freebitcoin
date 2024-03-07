@@ -174,7 +174,7 @@ def token_current_price(token_symbol):
                 try:
                     price = float(descs[a-1].replace(',', ''))
                 except Exception:
-                    price = 1
+                    price = 0.001
 
                 break
 
